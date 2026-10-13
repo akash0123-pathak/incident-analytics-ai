@@ -1,0 +1,16 @@
+fastapi==0.115.12
+uvicorn[standard]==0.34.0
+pandas==3.0.3
+duckdb==1.4.3
+# MCP exposes the governed semantic layer to compatible AI clients.
+mcp==1.2.0
+pydantic==2.13.5
+python-dotenv==1.0.1
+
+# Optional AI-provider adapters.  Dataset, warehouse, semantic and MCP modes
+# do not require an API key, but these enable the configured AI mode.
+langchain-openai>=1.1,<2.0
+langchain-anthropic>=1.2,<2.0
+# Intent-led orchestration and embedded incident topology projection.
+langgraph>=0.2,<1.0
+networkx>=3.3,<4.0
