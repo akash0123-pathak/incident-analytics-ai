@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: incident-analytics-api
+    runtime: python
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/health
+    envVars:
+      - key: APP_DATA_DIR
+        value: /var/data
+    disk:
+      name: incident-analytics-data
+      mountPath: /var/data
+      sizeGB: 1

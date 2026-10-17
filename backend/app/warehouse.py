@@ -5,6 +5,7 @@ the synthetic incidents in memory and persists them directly into DuckDB;
 there is no required CSV dataset at runtime. Application code reads only the
 canonical semantic view, never the raw warehouse table.
 """
+import os
 from pathlib import Path
 from threading import Lock
 
@@ -12,7 +13,7 @@ import duckdb
 import pandas as pd
 
 APP_DIR = Path(__file__).resolve().parent
-WAREHOUSE_DIR = APP_DIR / "warehouse"
+WAREHOUSE_DIR = Path(os.getenv("APP_DATA_DIR", str(APP_DIR / "warehouse")))
 DATABASE_PATH = WAREHOUSE_DIR / "incident_analytics.duckdb"
 _LOCK = Lock()
 
